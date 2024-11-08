@@ -6,7 +6,7 @@ const createWindow = () => {
         height: 950,
         autoHideMenuBar: true
     })
-    win.loadURL('https://8892314440.date/')
+    win.loadFile('index.html')
     win.setTitle('PhaseTel')
 
     win.on('page-title-updated', (event) => {
