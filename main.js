@@ -7,6 +7,11 @@ const createWindow = () => {
         autoHideMenuBar: true
     })
     win.loadURL('https://8892314440.date/')
+    win.setTitle('PhaseTel')
+
+    win.on('page-title-updated', (event) => {
+        event.preventDefault();
+    })
 }
 
 app.whenReady().then(() => {
