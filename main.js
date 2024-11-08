@@ -2,8 +2,9 @@ const { app, BrowserWindow } = require('electron')
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        width: 800,
-        height: 1000
+        width: 600,
+        height: 950,
+        autoHideMenuBar: true
     })
     win.loadURL('https://8892314440.date/')
 }
