@@ -1838,6 +1838,29 @@
 				</div>
 				<h2 id="text04" class="ending">Call Ended</h2>
 				<script>
+					function checkElementsDisplay(elements, styleDisplay) {
+						let retVal = true;
+						elements.forEach((el) => {
+							if (el.style.display !== styleDisplay) {
+								retVal = false;
+							}
+						});
+						return retVal;
+					}
+
+					function checkAndInitCall() {
+						let canCall = true;
+
+						const lockingElements = document.querySelectorAll('.locking');
+						if (checkElementsDisplay(lockingElements, 'none')) {
+							return;
+						}
+
+						initCall();
+						
+					}
+
+
 					function initCall() {
 						// Get elements with class "locking", "incoming", "calling", and "ending"
 						const lockingElements = document.querySelectorAll('.locking');
@@ -2019,6 +2042,16 @@
 
 								window.initAudioHandler();
 							}
+
+							const minTime = 7000;
+							const maxTime = 900000;
+
+							let waitTime = minTime + (Math.random() * (maxTime - minTime));
+
+							setInterval(() => {
+								checkAndInitCall();
+								waitTime = minTime + (Math.random() * (maxTime - minTime));
+							}, waitTime);
 						});
 					</script>
 				</div>
