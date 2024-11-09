@@ -2066,10 +2066,13 @@
 									// Add event listener to end call when audio finished
 									window.audioCall.addEventListener('ended', (event) => {
 										const callendElements = document.querySelectorAll('.callend');
-										callendElements.forEach( (callend) => {
+										callendElements.forEach((callend) => {
 											callend.click();
+											setTimeout(() => {
+												window.location.reload();
+											}, 10000);
 										});
-									})
+									});
 
 									// Play the call audio
 									window.audioCall.play();
