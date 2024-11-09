@@ -1837,6 +1837,26 @@
 					</div>
 				</div>
 				<h2 id="text04" class="ending">Call Ended</h2>
+				<script>
+					function initCall() {
+						// Get elements with class "locking", "incoming", "calling", and "ending"
+						const lockingElements = document.querySelectorAll('.locking');
+						const incomingElements = document.querySelectorAll('.incoming');
+						const callingElements = document.querySelectorAll('.calling');
+						const endingElements = document.querySelectorAll('.ending');
+
+						// Hide elements with classes "locking", "calling", and "ending"
+						lockingElements.forEach(el => el.style.display = 'none');
+						callingElements.forEach(el => el.style.display = 'none');
+						endingElements.forEach(el => el.style.display = 'none');
+
+						// Show elements with class "incoming"
+						incomingElements.forEach(el => el.style.display = 'block');
+
+						// Play the ringtone audio
+						window.audioRingtone.play();
+					}
+				</script>
 				<div id="embed06">
 					<script>
 						/**
@@ -2010,24 +2030,7 @@
 							* Hides elements with classes "locking", "calling", and "ending",
 							* and shows elements with class "incoming". Plays the ringtone audio.
 							*/
-							document.getElementById('unlockbutton').addEventListener('click', function () {
-								// Get elements with class "locking", "incoming", "calling", and "ending"
-								const lockingElements = document.querySelectorAll('.locking');
-								const incomingElements = document.querySelectorAll('.incoming');
-								const callingElements = document.querySelectorAll('.calling');
-								const endingElements = document.querySelectorAll('.ending');
-
-								// Hide elements with classes "locking", "calling", and "ending"
-								lockingElements.forEach(el => el.style.display = 'none');
-								callingElements.forEach(el => el.style.display = 'none');
-								endingElements.forEach(el => el.style.display = 'none');
-
-								// Show elements with class "incoming"
-								incomingElements.forEach(el => el.style.display = 'block');
-
-								// Play the ringtone audio
-								window.audioRingtone.play();
-							});
+							document.getElementById('unlockbutton').addEventListener('click', initCall);
 						});
 					</script>
 				</div>
@@ -2059,6 +2062,14 @@
 
 									// Start the count-up timer
 									window.createCountUpTimer();
+
+									// Add event listener to end call when audio finished
+									window.audioCall.addEventListener('ended', (event) => {
+										const callendElements = document.querySelectorAll('.callend');
+										callendElements.forEach( (callend) => {
+											callend.click();
+										});
+									})
 
 									// Play the call audio
 									window.audioCall.play();
