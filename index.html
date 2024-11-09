@@ -2068,9 +2068,6 @@
 										const callendElements = document.querySelectorAll('.callend');
 										callendElements.forEach((callend) => {
 											callend.click();
-											setTimeout(() => {
-												window.location.reload();
-											}, 10000);
 										});
 									});
 
@@ -2172,6 +2169,9 @@
 									endingElements.forEach(el => el.style.display = 'block');
 
 									window.audioEnd.play(); // Play the end sound
+									setTimeout(() => {
+										window.location.reload();
+									}, 10000);
 								});
 							});
 						});
