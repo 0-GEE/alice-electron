@@ -2018,7 +2018,7 @@
 							timeElement.style.marginTop = '-0.25em'; // Reduce space between date and time
 
 							/**
-							* Function to update the date and time every minute
+							* Function to update the date and time
 							* Updates the innerText of dateElement and timeElement
 							*/
 							function updateTime() {
@@ -2026,9 +2026,9 @@
 								timeElement.innerText = getLocalTime();
 							}
 
-							// Call updateTime initially and then every minute (60,000ms)
+							// Call updateTime initially and then every second (1,000ms)
 							updateTime();
-							setInterval(updateTime, 60000); // Update every 60 seconds
+							setInterval(updateTime, 1000); // Update every second
 
 							// Find the div with class "inner" and the element with id "topbar"
 							const innerDiv = document.querySelector('.inner');
